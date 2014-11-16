@@ -1,6 +1,23 @@
-**Hoisting in JavaScript**
+#Hoisting in JavaScript
 
-We all know that in JavaScript there are only 2 **scope** i.e. **Global** and **Functional** . There is no **block scope**. Now, here we need to look into a very important and interesting concept of JavaScript i.e. Hoisting. Since **JavaScript** has **function scope**, so due to obvious reasons this means that a **variable** declared anywhere in a **function** would be available/visible everywhere in that **function**. So this means that variable declared at the bottom of the function will be visible at the top of the function. This feature of **JavaScript** that hoists variable to the top is known as **hoisting**.
+As we all know that in **JavaScript** there are only 2 **scope** i.e. **Global scope** and **Function scope**. There is no **block scope** in **JavaScript**. Now, here we need to look into a very important and interesting concept of **JavaScript** i.e. **Hoisting**. Since **JavaScript** has no **block scope**, so due to obvious reasons a **variable** declared anywhere in a **function** would be visible/available everywhere in that **function**. So this means that variable declared at the bottom of the **function** will be visible in the whole **function**. Lets first run below **JavaScript** code and see the output:
+
+```JavaScript
+var a = 5;
+console.log(a); // 5
+function funcScopeTest() {
+  console.log(a); // undefined
+  var a = 10;
+  console.log(a); // 10
+}
+console.log(a); // 5
+funcScopeTest();
+```
+
+After reading above paragraph and watching the output of above code, you must be feeling strange and might be thinking what is happening? why and how??? etc. Lets understand
+
+
+This feature of **JavaScript** that **hoists** variable to the top is known as **hoisting**.
 
 So let's have a look into some piece of code.....
 
@@ -10,18 +27,22 @@ Hey..Hang on..I forgot to add an important point here :
 
 Now, without any further delay, let's move to some practical part:
 
-``
+```
+/**
+ * Created by Namita Malik on 11/11/14.
+ */
+"use strict";
 var a = 10;
-function c(){
-console.log(a,b);
-var b = 20; a=20;
-console.log(a,b);
+function c() {
+  console.log(a, b);
+  var b = 20;
+  a = 20;
+  console.log(a, b);
 }
-console.log(a,b);
+console.log(a);
 c();
-console.log(a,b);
-
-``
+console.log(a);
+```
 Now, let us run the above code in your favourite browser and check the output:
 
 Line 7 gives the output :
@@ -62,7 +83,3 @@ For line 5, output is but obvious i.e. 20,20.
 For line 9, output is again 10 and error and you now know the story.....
 
 This was all about hoisting in **JavaScript**. In case you want to know about the **scope in JavaScript**, read this awesome blog by Amit Kumar.
-
-
-
-
