@@ -14,72 +14,61 @@ console.log(a); // 5
 funcScopeTest();
 ```
 
-After reading above paragraph and watching the output of above code, you must be feeling strange and might be thinking what is happening? why and how??? etc. Lets understand
+After reading above paragraph and watching the output of above code, you must be feeling strange and might be thinking what is happening? why and how??? etc. Lets understand:
 
+Line 2 of the above code prints "5", which doesn't requires any explanation. Now, let's look at the line 4. We see that it logs "undefined", even though when 'a' has been defined as **global variable** with value "5" assigned to it. Well, the reason behind this behaviour is that 'var a' has also been defined in the **function** funcScopeTest() and in JavaScript, **function scope** gets preference. Now, you would be thinking that the 'var a' in funcScopeTest() has been defined in the next line, so how come JavaScript engine gets to know that there is 'var a' in funcScopeTest() too ?? The answer is a simple yet magical term **hoisting**.
 
-This feature of **JavaScript** that **hoists** variable to the top is known as **hoisting**.
-
-So let's have a look into some piece of code.....
+Due **hoisting**, a **variable** defined anywhere in the **function** is taken to the top of the **function**!
 
 Hey..Hang on..I forgot to add an important point here :
 
 **Hoisting takes only declaration of variables to the top, assigned variables remain where they are!**
 
-Now, without any further delay, let's move to some practical part:
+Now, without any further delay, let's move to some more practical part:
 
 ```
-/**
- * Created by Namita Malik on 11/11/14.
- */
-"use strict";
-var a = 10;
+var d = 10;
 function c() {
-  console.log(a, b);
-  var b = 20;
-  a = 20;
-  console.log(a, b);
+    console.log(d, e);
+    var e = 20;
+    d = 20;
+    console.log(d, e);
 }
-console.log(a);
+console.log(d);
 c();
-console.log(a);
+console.log(d);
 ```
-Now, let us run the above code in your favourite browser and check the output:
+Run the above code in your favourite browser and check the output:
 
-Line 7 gives the output :
+Line 8 gives the output :
 
-10, error
+10
 
-why?
+This doesn't requires any explanation
 
-As we know, a is global variable and has global scope so we get the value assigned to 'a' as output. But, 'b' is function/local variable and is not accessible outside the function, therefore we get error.
+Line 3 prints "10 undefined". It is because that 'var d' has been declared as **global variable** and has been assigned value "10". But now, a question would arise in your mind that in line 5, variable 'd' has been assigned the value "20". So "20" should have got printed instead of "10".
 
-Now, let's see the output of Line 3.
+The answer is simple : The magic of **hoisting** is limited to the **declaration** part. In line 5, **variable** 'd' has been assigned the value "20", but has not been declared again. So **assignment** part remains where it is, and we get the value of the **global variable** 'd'.
 
-Output is undefined, undefined.
+Now. why does **variable** 'e' logs "undefined"? Answer is again the same. Due to **hoisting**, **declaration** part went to the top, but **assignment** remained where it was, hence we get "undefined". Line 6 logs "20 20" because now, both 'd' and 'e' have been assigned value "20".
 
-Can you guess why?
+Let's look at the last line now. It logs "20". This because that value of the **global variable** 'd' has been updated to "20".
 
-We know that due to **hoisting** feature in JavaScript, our code becomes like this :
+Things would be more clear if you see a slightly modified version of the code:
 
-``
-var a=10;
-function c (){
-var a,b;
-console.log(a,b);
-b=20; a=20;
-console.log(a,b);
+```JavaScript
+var d = 10;
+function c() {
+    var e; //this happened due to hoisting
+    console.log(d, e);
+    e = 20;
+    d = 20;
+    console.log(d, e);
 }
-console.log(a,b);
+console.log(d);
 c();
-console.log(a,b);
-
-``
-Since JavaScript at the time of parsing knows that var 'a' is declared again in the function and since function scope gets preference over global scope, therefore, JS engine forgets the declaration of 'var a' as global variable and assignment of value '10' to it. And the local 'var a' is declared in the top line of the function while value is defined later, hence we get **undefined**!
-
-For 'var b' it is simple, as it has been assigned value later in the code, therefore we get undefined in output.
-
-For line 5, output is but obvious i.e. 20,20.
-
-For line 9, output is again 10 and error and you now know the story.....
+console.log(d);
+```
+The above code simply shows that how **declaration** part moves to the top of the **function** during **hoisting**.
 
 This was all about hoisting in **JavaScript**. In case you want to know about the **scope in JavaScript**, read this awesome blog by Amit Kumar.
