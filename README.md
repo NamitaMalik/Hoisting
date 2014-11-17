@@ -28,7 +28,7 @@ Hey..Hang on.. I forgot to add an important point here :
 1. Parsing Phase
 2. Execution Phase.
 
-So at first/Parsing Phase, **JavaScript**, perform **hoisting** with parsing. So after the parsing phase and before the execution phase above code will be convert like below:
+So at first/Parsing Phase, **JavaScript**, perform **hoisting** with parsing. So after the parsing phase and before the execution phase above code will be converted to below:
 
 ```JavaScript
 var a = 5;
@@ -43,6 +43,6 @@ console.log(a); // 5
 funcScopeTest();
 ```
 
-You will notice the changes between both above code is that only declaration of variable(in our example variable name is **a**) has move to first line of the **function**. Assignment is still happening on the same place. Yup, now you got the secret of **Hoisting**.
+You will notice that difference between both the above snippets is that only declaration of variable(in our example variable name is **a**) has moved to the first line of the **function**. Assignment is still happening on the same place!
 
 This was all about hoisting in **JavaScript**. In case you want to know about the **scope in JavaScript**, read this awesome blog by (Amit Thakkar)[http://codechutney.in/blog/nodejs/scope-in-javascript/].
