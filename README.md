@@ -45,4 +45,4 @@ funcScopeTest();
 
 You will notice that difference between the above snippets is that only declaration of variable (in our example variable name is **a**) has moved to the first line of the **function**. Assignment is still happening on the same place!
 
-This was all about hoisting in **JavaScript**. In case you want to know about the **scope in JavaScript**, read this awesome blog by (Amit Thakkar)[http://codechutney.in/blog/nodejs/scope-in-javascript/].
+This was all about **Hoisting** in **JavaScript**. In case you want to know about the **Scope in JavaScript**, read this awesome blog by [Amit Thakkar](http://codechutney.in/blog/nodejs/scope-in-javascript/).
