@@ -1,0 +1,8 @@
+title: Hoisting
+description: This blog discusses hoisting in JavaScript.
+google_analytics: 
+show_downloads: true
+theme: jekyll-theme-hacker
+
+gems:
+  - jekyll-mentions
